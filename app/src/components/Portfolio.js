@@ -1,5 +1,6 @@
 import React from 'react';
 import Toolbar from './Toolbar';
+import ProjectList from './ProjectList';
 
 export default class Portfolio extends React.Component {
     constructor(props) {
@@ -7,14 +8,7 @@ export default class Portfolio extends React.Component {
         this.onClickTab = this.onClickTab.bind(this);       
         this.filters = ["All", "Websites", "Flayers", "Business Cards"];
         this.state = {selected: "All"};
-    }
-
-    onClickTab(filter) {
-        this.setState({selected: filter})
-    }
-
-    render() {
-        const projects = [{
+        this.projects = [{
             img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/mon.jpg",
             category: "Business Cards"
           }, {
@@ -66,13 +60,24 @@ export default class Portfolio extends React.Component {
             img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290_3.png",
             category: "Flayers"
           }];
+          this.projectsSelect = this.projects;
+    }
+
+    onClickTab(filter) {
+        this.setState({selected: filter});      
+        if (filter !== 'All') {
+            this.projectsSelect = this.projects.filter(project => (project.category === filter));
+        }      
+    }
+
+    render() {    
         return (
             <div>
                 <Toolbar 
                     filters={this.filters}
                     selected={this.state.selected}
-                    onSelectFilter={this.onClickTab}
-                />
+                    onSelectFilter={this.onClickTab}/>
+                <ProjectList projects={this.projectsSelect}/>
             </div>
         )
     }
