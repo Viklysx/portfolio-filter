@@ -1,10 +1,10 @@
 export default function ProjectList({projects}) {
     return (
-        <div className="">
-            {projects.map((project) =>
-                <img
-                  className=""
-                  src={project.img} />
+        <div className="projects">
+            {projects.map((project, i) =>
+                <img 
+                    key={i} 
+                    src={project.img} />
             )}
         </div>      
     )

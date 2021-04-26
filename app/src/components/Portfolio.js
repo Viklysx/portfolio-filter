@@ -67,12 +67,12 @@ export default class Portfolio extends React.Component {
         this.setState({selected: filter});      
         if (filter !== 'All') {
             this.projectsSelect = this.projects.filter(project => (project.category === filter));
-        }      
+        } else this.projectsSelect = this.projects;      
     }
 
     render() {    
         return (
-            <div>
+            <div className="wrapper-portfolio">
                 <Toolbar 
                     filters={this.filters}
                     selected={this.state.selected}

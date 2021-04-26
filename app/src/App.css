@@ -30,6 +30,21 @@ button {
 
 .toolbar {
   margin: 25px 0px;
+  text-align: left;
+}
+
+.projects {
+  column-count: 3;
+}
+
+.projects img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.wrapper-portfolio {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
